@@ -3,8 +3,12 @@ def main():
     text_list = read_the_text(path)
     num_of_words = words_count(text_list)
     num_of_each_char = char_count(text_list)
+    char_listed = final_dict_list(num_of_each_char)
     print(num_of_words)
-    print(num_of_each_char)
+    print(char_listed)
+
+def sort_on(d):
+    return d["num"]
 
 def read_the_text(from_path):
     with open(from_path) as f:
@@ -24,6 +28,12 @@ def char_count(text_list):
             chars[letter] = 1
     return chars
 
+def final_dict_list(num_of_each_char):
+    char_list = []
+    for each in num_of_each_char:
+        char_list.append({"char": each, "num": num_of_each_char[each]})
+    char_list.sort(reverse=True, key=sort_on)
+    return char_list
 
 main()
 

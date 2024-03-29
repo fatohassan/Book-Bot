@@ -6,6 +6,15 @@ def main():
     char_listed = final_dict_list(num_of_each_char)
     print(num_of_words)
     print(char_listed)
+    print(f"--- Begin report of {path} ---")
+    print(f"{num_of_words} words found in the document /n")
+
+    for item in char_listed:
+        if not item["char"].isalpha():
+            continue
+        print(f"The '{item['char']}' character was found {item['num']} times")
+
+    print("--- End report ---")
 
 def sort_on(d):
     return d["num"]
